@@ -19,20 +19,16 @@ class JokesApp extends Component {
         }
 
         Promise.all(urlArray.map(url => fetch(url)))
-            .then(responses => {
-                    responses.map(async response => {
-                        const joke = await fetch(response.url);
-                        if (joke.ok) {
-                            const text = await joke.json();
-                            const jokeText = text.value;
-                            const jokeId = text.id;
-                            jokes.push({text: jokeText, id: jokeId});
-                        }
-                        this.setState({jokes});
-                        return jokes;
-                    });
-                }
-            );
+            .then(responses => Promise.all(responses.map(response => response.json())))
+            .then(result => {
+                result.map(joke => {
+                    const jokeText = joke.value;
+                    const jokeId = joke.id;
+                    jokes.push({text: jokeText, id: jokeId});
+                    this.setState({jokes});
+                    return jokes;
+                });
+            })
     }
 
     render() {
