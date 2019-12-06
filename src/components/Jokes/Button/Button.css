@@ -1,0 +1,9 @@
+.joke-button {
+    cursor: pointer;
+    background: transparent;
+    border: 2px solid #000;
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: 20px;
+    outline: none;
+}

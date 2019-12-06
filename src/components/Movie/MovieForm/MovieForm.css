@@ -1,0 +1,17 @@
+.form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.movieTitle {
+    width: 600px;
+    height: 30px;
+}
+
+.add {
+    width: 70px;
+    height: 35px;
+    cursor: pointer;
+}
